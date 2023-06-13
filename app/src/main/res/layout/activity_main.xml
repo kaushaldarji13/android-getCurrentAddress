@@ -26,15 +26,24 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
         />
-    
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:text="Get location"
-        android:id="@+id/get_location"
-        />
+
+  <Button
+      android:id="@+id/get_location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="450dp"
+      android:text="Get location" />
+
+  <Button
+      android:layout_below="@id/get_location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="4dp"
+      android:text="show map"
+      android:id="@+id/show_map"
+      />
 
 
 </RelativeLayout>

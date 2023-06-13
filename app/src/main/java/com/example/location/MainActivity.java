@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -30,7 +31,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
-   private Button get_location;
+   private Button get_location, show_map;
    private TextView getaddress;
     LocationManager locationManager;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setContentView(R.layout.activity_main);
 
         get_location = findViewById(R.id.get_location);
+        show_map = findViewById(R.id.show_map);
         getaddress = findViewById(R.id.address);
 
         //Runtime Permission
@@ -60,13 +62,21 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+        show_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(MainActivity.this,MapsActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @SuppressLint("MissingPermission")
     public void getLocation() {
         try {
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5,MainActivity.this);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5,MainActivity.this);
 
         }
         catch (Exception e){
@@ -108,3 +118,5 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
        
     }
 }
+
+
